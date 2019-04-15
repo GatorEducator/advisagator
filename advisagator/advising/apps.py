@@ -5,4 +5,5 @@ from django.apps import AppConfig
 
 class AdvisingConfig(AppConfig):
     """This configs the name of the app"""
+
     name = "advising"
