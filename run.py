@@ -1,0 +1,10 @@
+"""Run this file to run the application"""
+
+# imports everything from the application folder
+from advisagator import app
+
+app.secret_key = "$JLmL!eCQXyajbdu2LCJ&Vwqs2JGagg3B&FRfexCmKBV"
+
+# starts the server, debug mode is on
+app.debug = True
+app.run()

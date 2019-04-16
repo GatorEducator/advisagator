@@ -1,7 +1,7 @@
 """ Student endpoints """
 import flask
 
-from application import app
+from advisagator import app
 from . import db_connect as db
 
 

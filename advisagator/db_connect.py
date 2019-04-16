@@ -5,7 +5,7 @@ import sqlite3
 import flask
 
 # from flask import g, session, escape
-from application import app
+from advisagator import app
 
 
 DATABASE = "database.db"

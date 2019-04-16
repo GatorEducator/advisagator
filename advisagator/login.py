@@ -2,7 +2,7 @@
 
 import flask
 
-from application import app
+from advisagator import app
 from . import db_connect
 
 # LOGIN THE USER
