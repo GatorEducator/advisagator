@@ -17,5 +17,3 @@ pytest-sugar = "*"
 [pipenv]
 allow_prereleases = true
 
-[pipenv]
-allow_prereleases = true
