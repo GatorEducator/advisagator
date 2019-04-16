@@ -1,21 +1,19 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
 
 [dev-packages]
 black = "*"
-flake8 = "*"
-neovim = "*"
-pytest-django = "*"
 pylint = "*"
-
-[packages]
-pathlib = "*"
-py = "*"
-django = ">=2.1.6"
-networkx = "*"
-social-auth-app-django = "*"
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-sugar = "*"
 
 [pipenv]
 allow_prereleases = true
+
