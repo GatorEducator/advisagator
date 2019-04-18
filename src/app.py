@@ -1,4 +1,5 @@
 """ This is undocumented """
+# pylint: disable=unused-import
 from flask import (
     render_template,
     Flask,
@@ -9,6 +10,7 @@ from flask import (
     abort,
     session,
 )
+# pylint: disable=wrong-import-order
 import os
 import login_handler
 
@@ -25,6 +27,7 @@ def home_redirect():
 @app.route("/home", methods=["GET"])
 def home_get():
     """ This is undocumented """
+    # pylint: disable=no-else-return
     if not session.get("logged_in"):
         return render_template("home.html")
     else:
@@ -77,10 +80,10 @@ def petitions_get():
         return render_template("petitions.html")
     else:
         return redirect("/home")
-        # pylint: disable=no-else-return
 
 
 @app.errorhandler(404)
+# pylint: disable=unused-argument
 def page_not_found(e):
     """ This is undocumented """
     return render_template("404.html"), 404
