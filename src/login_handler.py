@@ -14,7 +14,7 @@ def validate_user(email, password):
     email_tuple = email_query_obj.fetchone()  # store results of query - in a tuple
     try:
         email_result = email_tuple[0]  # if query returns a result, store it as a string
-    except:
+    except ImportError:
         email_result = (
             ""
         )  # if query returns no results/an error, set value as empty string
@@ -30,7 +30,7 @@ def validate_user(email, password):
         password_result = password_tuple[
             0
         ]  # if query returns a result, store it as a string
-    except:
+    except ImportError:
         password_result = (
             ""
         )  # if query returns no results/an error, set value as empty string
