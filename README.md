@@ -2,10 +2,6 @@
 ![Image of Logo](insert link)
 # Advise-a-Gator
 <center> This tool makes communication swift with your advisor and course of your 4 year plan </center>
-
-.
-
-
 ## Key Features
 
 * insert
