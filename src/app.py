@@ -1,5 +1,6 @@
 """ This is undocumented """
 import os
+
 # pylint: disable=unused-import
 from flask import (
     render_template,
