@@ -35,6 +35,8 @@ def validate_user(email, password):
             ""
         )  # if query returns no results/an error, set value as empty string
 
+    # pylint: disable=simplifiable-if-statement
+    # pylint: disable=no-else-return
     if email == email_result and password == password_result:
         return True  # if valid, login
     else:
