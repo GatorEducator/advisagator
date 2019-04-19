@@ -10,6 +10,7 @@ from flask import (
     abort,
     session,
 )
+
 # pylint: disable=wrong-import-order
 import os
 import login_handler
