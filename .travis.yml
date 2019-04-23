@@ -16,7 +16,8 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
     - LANG=en_US.UTF-8
     - LC_ALL=en_US.UTF-8
-    - secure: 5ec1ef61-6617-4275-a211-6b8a379dc9a2
+    - secure: O1b31+2c58n6wN9+tivUxzpK4845ab9V5nFWSp8KovpEcgj2hBxRJdlW0p5l6OVhAZoC4y/jVHvU7RcnQzaqq1F8rRUogE12kF20VrMoMLbZVy7njGmtaBIBQGOt9sMRxYyQibUFVrGT7faWG39dKM4EWH+OHiK4fXxfZkzyJ4emQ70LukI8y+GArQ5z0csZXRnBN/cDsigYyinQRixw4kRYnQsFCosiW2gTUOyhVC3ZVglNi34kxmKaHodPwfqW86Pf68GvplCWN3JACdAdJYZS6pD48zEio3lmLfGyGYeXM3PC0Hf+aszzOgIT7dvZZmY/GO1kwzpZ07sFsIScHLo1aM8r1QgzVOzWXK9kVRy+5TPu+pmQkQb9UWehsrMDL+CtabvDjvXDuP4c5+ngL05cz5pYxmNiPD4fojW6AwMTixUdY5KsD/Q0nMlj/oj0s4uiXZ524dbl7Zxcixeyvt+mRvLi/YO9ZuQBuN94i+Cs09LFWqnyxHGhxBN7+4mqabt4/Nd0WL/t35x47Br9/Ku9wDAwms1FA8kugcoUXqLi/Gyvm2S4IdDhVL8TzHmeQRGHrQUNiRcTtEhCUHDgnh/5J9u17eoh75wqz7j5vcR4Nt9F1Avraqrd9m/+XwffEY1Em46FGmmoxPlD7RiIFL4X454kzn5iTsSpfvu47nI=
+
 
 
 # install mdl for checking Markdown
