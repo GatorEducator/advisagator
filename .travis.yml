@@ -50,5 +50,5 @@ script:
   - mdl README.md
 
 # report coverage information to CodeCov
-# after_success:
-#   - pipenv run codecov
+after_success:
+  - pipenv run codecov
