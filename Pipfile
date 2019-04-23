@@ -1,24 +1,12 @@
 [[source]]
+name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-name = "pypi"
+
+[dev-packages]
 
 [packages]
 flask = "*"
 
-[dev-packages]
-black = "*"
-pylint = "*"
-flake8 = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-sugar = "*"
-
-[pipenv]
-allow_prereleases = true
-
-[scripts]
-server = "python run.py True"
-test = "./scripts/test.sh"
-cover = "./scripts/cover.sh"
-lint = "./scripts/lint.sh"
+[requires]
+python_version = "3.6"
