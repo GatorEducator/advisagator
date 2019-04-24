@@ -7,11 +7,19 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
         <title>Advisagator</title>
     </head>
-    <body>
+    <body class="container">
+      <header>Advisagator</header>
+      <main class="mainLogin">
+        <div id="loginBox">
         <form action="/login" method="POST">
             <input type="email" name="email">
             <input type="password" name="password">
             <input type="submit" value="Log in">
         </form>
+        </div>
+      </main>
     </body>
+    <footer>
+    <p id="footer-size"></p>
+  </footer>
 </html>
