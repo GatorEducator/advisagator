@@ -2,15 +2,26 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type=text/javascript src="{{ url_for('static', filename='js/home.js') }}"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
         <title>Advisagator</title>
     </head>
-    <body>
+    <body class="container">
+      <header>Advisagator</header>
+      <main class="mainLogin">
+        <div id="loginBox">
         <h1>Welcome to <i>Advisagator</i></h1>
-        <a href="/login">Login</a>
+        <div class="button">
+        <a href="/login" class="noDecGold"><center>Login</center></a>
+        </div>
         <hr>
         <p>This is a tool for students to effectively communicate with their advisors.</p>
+      </div>
+        </main>
     </body>
+    <footer>
+    <p id="footer-size"></p>
+  </footer>
 </html>
