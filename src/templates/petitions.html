@@ -3,9 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Petition Pronto</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <title>Advisagator</title>
     </head>
-    <body>
+    <body class="container">
+      <header>Advisagator</header>
+      <main class="mainMenu">
         <h1>Petitions</h1>
         <a href="/change_password">Change Password</a>
         <br>
@@ -17,5 +20,9 @@
             <li>Name:{{petition['name']}} | Email:{{petition['email']}} | Department:{{petition['department']}} | <a href="/petitions/{{petition['id']}}">Inspect</a></li>
             {% endfor %}
         </ul>
+        </main>
     </body>
+    <footer>
+    <p id="footer-size"></p>
+  </footer>
 </html>
