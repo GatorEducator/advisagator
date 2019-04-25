@@ -13,6 +13,7 @@ def test_flake8():
     name_of_files = []
 
     # fill list with all python files found in all subdirectories
+    #pylint: disable=W0612
     for root, _, files in os.walk("Pynesthesia", topdown=False):
         files = glob.glob("/.../src/*.py")
         name_of_files.extend(files)
