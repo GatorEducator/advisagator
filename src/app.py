@@ -1,5 +1,17 @@
-from flask import render_template, Flask, Response, redirect, url_for, request, abort, session
+"""undocumented"""
 import os
+# pylint: disable=W0611
+from flask import (
+    render_template,
+    Flask,
+    Response,
+    redirect,
+    url_for,
+    request,
+    abort,
+    session,
+)
+
 import login_handler
 import database_handler
 
@@ -10,33 +22,40 @@ app.secret_key = os.urandom(16)
 
 @app.route("/", methods=["GET"])
 def home_redirect():
+    """undocumented"""
     return redirect("/home")
 
 
 @app.route("/home", methods=["GET"])
 def home_get():
-    if not session.get('logged_in'):
-        return render_template('home.html')
+    """undocumented"""
+    # pylint: disable=R1705
+    if not session.get("logged_in"):
+        return render_template("home.html")
     else:
         return redirect("/petitions")
 
 
 @app.route("/login", methods=["GET"])
 def login_get():
-    if not session.get('logged_in'):
-        return render_template('login.html')
+    """undocumented"""
+    # pylint: disable=R1705
+    if not session.get("logged_in"):
+        return render_template("login.html")
     else:
         return redirect("/petitions")
 
 
 @app.route("/login", methods=["POST"])
 def login_post():
-    email = request.form['email']
-    password = request.form['password']
+    """undocumented"""
+    email = request.form["email"]
+    password = request.form["password"]
     valid = login_handler.validate_user(email, password)
+    # pylint: disable=R1705
     if valid:
-        session['logged_in'] = True
-        session['email'] = email
+        session["logged_in"] = True
+        session["email"] = email
         return redirect("/petitions")
     else:
         return redirect("/invalid_login")
@@ -44,18 +63,22 @@ def login_post():
 
 @app.route("/invalid_login", methods=["GET"])
 def invalid_login_get():
+    """undocumented"""
     return render_template("invalid_login.html")
 
 
 @app.route("/logout", methods=["GET"])
 def logout_get():
+    """undocumented"""
     session.clear()
     return redirect("/home")
 
 
 @app.route("/change_password", methods=["GET"])
 def change_password_get():
-    if session.get('logged_in'):
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
         return render_template("change_password.html")
     else:
         return redirect("/home")
@@ -63,8 +86,10 @@ def change_password_get():
 
 @app.route("/change_password", methods=["POST"])
 def change_password_post():
-    if session.get('logged_in'):
-        password = request.form['password']
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
+        password = request.form["password"]
         confirm_password = request.form["confirm_password"]
         if password == confirm_password:
             # database_handler.update_password(session.get('email'), new_password)
@@ -78,7 +103,9 @@ def change_password_post():
 
 @app.route("/invalid_confirmation", methods=["GET"])
 def invalid_confirmation_get():
-    if session.get('logged_in'):
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
         return render_template("invalid_confirmation.html")
     else:
         return redirect("/home")
@@ -86,11 +113,18 @@ def invalid_confirmation_get():
 
 @app.route("/petitions", methods=["GET"])
 def petitions_get():
-    if session.get('logged_in'):
-        petitions = database_handler.get_petitions(session['email'])
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
+        petitions = database_handler.get_petitions(session["email"])
         out_petitions = list()
         for petition in petitions:
-            new_petition = {'id':petition[3],'name':petition[0],'email':petition[1],'department':petition[2]}
+            new_petition = {
+                "id": petition[3],
+                "name": petition[0],
+                "email": petition[1],
+                "department": petition[2],
+            }
             out_petitions.append(new_petition)
         return render_template("petitions.html", petitions=out_petitions)
     else:
@@ -98,19 +132,31 @@ def petitions_get():
 
 
 @app.route("/petitions/<id>", methods=["GET"])
+# pylint: disable=W0622
 def petitions_inspect_get(id):
-    if session.get('logged_in'):
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
         petition = database_handler.get_petition_info(id)
-        new_petition_info = {'id':petition[4],'name':petition[0],'email':petition[1],'department':petition[3],'content':petition[2]}
+        new_petition_info = {
+            "id": petition[4],
+            "name": petition[0],
+            "email": petition[1],
+            "department": petition[3],
+            "content": petition[2],
+        }
         return render_template("petition_info.html", petition_info=new_petition_info)
     else:
         return redirect("/home")
 
 
 @app.route("/petitions/<id>", methods=["POST"])
+# pylint: disable=W0613
 def petitions_inspect_post(id):
-    if session.get('logged_in'):
-        approved = request.form['approved']
+    """undocumented"""
+    # pylint: disable=R1705
+    if session.get("logged_in"):
+        approved = request.form["approved"]
         print(approved)
         return redirect("/petitions")
     else:
@@ -118,8 +164,10 @@ def petitions_inspect_post(id):
 
 
 @app.errorhandler(404)
+# pylint: disable=W0613
 def page_not_found(e):
-    return render_template('404.html'), 404
+    """undocumented"""
+    return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
