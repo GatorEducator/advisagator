@@ -27,8 +27,8 @@ Pipevn run flask
 [Flask 1.02](http://flask.pocoo.org)
 [Python 3.6](https://www.python.org/downloads/release/python-360)
 ## Acknowledgements
-Khan, Mohammad
-Huang, Spencer
-Mendez, Johnathan
-Walker, Christian
-Watto, Benjamin
+- Khan, Mohammad
+- Huang, Spencer
+- Mendez, Johnathan
+- Walker, Christian
+- Watto, Benjamin
