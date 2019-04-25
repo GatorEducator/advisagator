@@ -18,13 +18,15 @@ def get_petitions(email):
     dept_tuple = dept_query_obj.fetchone()  # store results of query - in a tuple
     try:
         dept_result = dept_tuple[0]  # if query returns a result, store it as a string
+    # pylint: disable=W0702
     except:
         dept_result = (
             ""
         )  # if query returns no results/an error, set value as empty string
 
     # Find petitions for that department:
-    petition_query = 'SELECT name, email, department, petitionID FROM Student_Petition WHERE department = "{A}"'.format(
+    # pylint: disable=C0301
+    petition_query = 'SELECT name, email, department, petitionIDFROM Student_Petition WHERE department = "{A}"'.format(
         A=dept_result
     )
     petition_query_obj = conn.execute(petition_query)
@@ -33,6 +35,7 @@ def get_petitions(email):
         petition_results = (
             petition_list
         )  # if query returns a result, store it as a string
+    # pylint: disable=W0702
     except:
         petition_results = (
             ""
@@ -41,17 +44,18 @@ def get_petitions(email):
     return petition_results
 
 
-def get_petition_info(id):
+def get_petition_info(did):
     """Connects to the database and gets info about a specific petition."""
     conn = sqlite3.connect("petitiondb.sqlite3")  # connect to the database
 
     petition_query = 'SELECT * FROM Student_Petition WHERE petitionID = "{A}"'.format(
-        A=id
+        A=did
     )
     petition_query_obj = conn.execute(petition_query)
     petition_tuple = petition_query_obj.fetchall()
     try:
         petition_info = petition_tuple[0]
+    # pylint: disable=W0702
     except:
         petition_info = ""
 

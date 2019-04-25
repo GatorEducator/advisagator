@@ -1,5 +1,6 @@
 """undocumented"""
 import os
+
 # pylint: disable=W0611
 from flask import (
     render_template,
@@ -16,6 +17,7 @@ import login_handler
 import database_handler
 
 
+# pylint: disable=C0103
 app = Flask(__name__)
 app.secret_key = os.urandom(16)
 
@@ -132,12 +134,11 @@ def petitions_get():
 
 
 @app.route("/petitions/<id>", methods=["GET"])
-# pylint: disable=W0622
-def petitions_inspect_get(id):
+def petitions_inspect_get(did):
     """undocumented"""
     # pylint: disable=R1705
     if session.get("logged_in"):
-        petition = database_handler.get_petition_info(id)
+        petition = database_handler.get_petition_info(did)
         new_petition_info = {
             "id": petition[4],
             "name": petition[0],
@@ -151,8 +152,7 @@ def petitions_inspect_get(id):
 
 
 @app.route("/petitions/<id>", methods=["POST"])
-# pylint: disable=W0613
-def petitions_inspect_post(id):
+def petitions_inspect_post():
     """undocumented"""
     # pylint: disable=R1705
     if session.get("logged_in"):
@@ -164,8 +164,7 @@ def petitions_inspect_post(id):
 
 
 @app.errorhandler(404)
-# pylint: disable=W0613
-def page_not_found(e):
+def page_not_found():
     """undocumented"""
     return render_template("404.html"), 404
 

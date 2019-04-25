@@ -14,6 +14,7 @@ def validate_user(email, password):
     email_tuple = email_query_obj.fetchone()  # store results of query - in a tuple
     try:
         email_result = email_tuple[0]  # if query returns a result, store it as a string
+    # pylint: disable=W0702
     except:
         email_result = (
             ""
@@ -30,11 +31,12 @@ def validate_user(email, password):
         password_result = password_tuple[
             0
         ]  # if query returns a result, store it as a string
+    # pylint: disable=W0702
     except:
         password_result = (
             ""
         )  # if query returns no results/an error, set value as empty string
-
+    # pylint: disable=R1703,R1705
     if email == email_result and password == password_result:
         return True  # if valid, login
     else:
