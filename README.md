@@ -1,6 +1,6 @@
 # Advisagator
+![Image of Logo](https://github.com/GatorEducator/advisagator/tree/master/.github/advisagator.png)
 Tool that students can effectively communicate with their academic adviser.
-
 
 ## Key Features
 
