@@ -21,7 +21,7 @@ Advise-a-Gator is a web application created with Flask is a tool that students c
 - Pipenv install --dev
 ## Running Advis-a-Gator
 Pipevn run flask
-'in src folder'
+`in src folder`
 
 ## Dependecies
 - [Flask 1.02](http://flask.pocoo.org)
