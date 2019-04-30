@@ -2,6 +2,8 @@
 ![Image of Logo](https://github.com/GatorEducator/advisagator/tree/master/.github/advisagator.png)
 Tool that students can effectively communicate with their academic adviser.
 
+[![codecov.io](http://codecov.io/github/GatorEducator/advisagator/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/advisagator?branch=master)
+
 ## Key Features
 
 * flask integration
@@ -19,6 +21,7 @@ Advise-a-Gator is a web application created with Flask is a tool that students c
 ## Installing Advis-a-Gator
 - Export FLASK_ENV=development
 - Pipenv install --dev
+
 ## Running Advis-a-Gator
 Pipevn run flask
 `in src folder`
@@ -26,6 +29,7 @@ Pipevn run flask
 ## Dependecies
 - [Flask 1.02](http://flask.pocoo.org)
 - [Python 3.6](https://www.python.org/downloads/release/python-360)
+
 ## Acknowledgements
 - Khan, Mohammad
 - Huang, Spencer
