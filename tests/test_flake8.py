@@ -15,11 +15,11 @@ def test_flake8():
     # fill list with all python files found in all subdirectories
     # pylint: disable=W0612
     for root, _, files in os.walk("Pynesthesia", topdown=False):
-        files = glob.glob("/.../src/*.py")
+        files = glob.glob(root + "/../*.py")
         name_of_files.extend(files)
 
     style_guide = flake8.get_style_guide(
-        ignore=["E265", "E501", "E101", "W191", "E402", "E501", "F405"]
+        ignore=["E265", "E501", "E101", "W191", "E402", "E501", "F405", "E722"]
     )
     report = style_guide.check_files(name_of_files)
     assert report.get_statistics("E") == [], "Flake8 found violations"
