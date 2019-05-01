@@ -1,6 +1,6 @@
 # Advisagator
 
-![Image of Logo](https://github.com/GatorEducator/advisagator/tree/master/.github/advisagator.png)
+![Image of Logo](https://raw.githubusercontent.com/GatorEducator/advisagator/master/.github/advisagator.png)
 Tool that students can effectively communicate with their academic adviser.
 
 [![codecov.io](http://codecov.io/github/GatorEducator/advisagator/coverage.svg?branch=master)](http://codecov.io/github/GatorEducator/advisagator?branch=master)
@@ -28,8 +28,7 @@ allow faculty to record that they have met with their advisees.
 
 ## Running Advis-a-Gator
 
-Pipevn run flask
-`in src folder`
+Pipevn run flask `in src folder`
 
 ## Dependecies
 
