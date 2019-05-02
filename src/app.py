@@ -115,7 +115,7 @@ def invalid_confirmation_get():
 
 @app.route("/petitions", methods=["GET"])
 def petitions_get():
-    """undocumented"""
+    """ Displays 'petitions.html' or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         petitions = database_handler.get_petitions(session["email"])
@@ -135,7 +135,7 @@ def petitions_get():
 
 @app.route("/petitions/<id>", methods=["GET"])
 def petitions_inspect_get(did):
-    """undocumented"""
+    """ Displays petition info if logged in or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         petition = database_handler.get_petition_info(did)
