@@ -1,0 +1,44 @@
+{% extends "/students/base_template.html" %}
+	{% block title %}Student Dashboard Home{% endblock %}
+	{% block body %}
+		<style>
+			ul {
+				list-style-type: none;
+				margin: 0;
+			}
+		</style>
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<h1>Upload Plan</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4">
+					<form action = "/students/4yrplan/"
+	 				      method = "POST"
+				              enctype = "multipart/form-data">
+
+				 		<input type = "file" name = "file" />
+				 		<input type = "submit" value="Upload"/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<p> </p>
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<h1>Download Plan</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4">
+						<form action = "/return-files/"
+									method = "GET"
+							 		<a href="/return-files/" target="blank"><button class='btn btn-default'>Download</button></a>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

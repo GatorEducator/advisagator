@@ -1,6 +1,10 @@
 """ Student endpoints """
 import flask
+import os
 
+from flask import Response
+from flask import send_file
+from flask import send_from_directory
 from flask import current_app as app
 from . import db_connect as db
 
@@ -97,3 +101,29 @@ def student_quiz_page(class_id, quiz_id):
 
     flask.flash(f"You receieved {result[0]} on this quiz.")
     return flask.render_template("/students/quiz_page.html", quiz_name=quiz_name)
+
+@app.route("/students/4yrplan/")
+def student_4yrplan():
+    """ 4 year plan page """
+    return flask.render_template(
+        "/students/4yrplan.html"
+    )
+
+#
+# @app.route('/download')
+# def download():
+#     file = open('4yrplan/4yrplan_template.csv','r')
+#     returnfile = file.read().encode('latin-1')
+#     file.close()
+#     return Response(returnfile,
+#         mimetype="text/csv",
+#         headers={"Content-disposition":
+#                  "attachment; filename=4yrplan_template.csv"})
+
+
+@app.route('/return-files/')
+def return_files_tut():
+	try:
+		return send_file('4yrplan/4yrplan_template.csv', attachment_filename='4yrplan_template.csv')
+	except Exception as e:
+		return str(e)
