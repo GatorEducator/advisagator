@@ -2,9 +2,9 @@
 import flask
 import os
 
-from flask import Response
+from openpyxl import load_workbook
+from PDFWriter import PDFWriter
 from flask import send_file
-from flask import send_from_directory
 from flask import current_app as app
 from . import db_connect as db
 
@@ -124,6 +124,28 @@ def student_4yrplan():
 @app.route('/return-files/')
 def return_files_tut():
 	try:
-		return send_file('4yrplan/4yrplan_template.csv', attachment_filename='4yrplan_template.csv')
+		return send_file('4yrplan/4yrplan_template.csv', attachment_filename='4yrplan_template.xlsx')
 	except Exception as e:
 		return str(e)
+
+@app.route('/convertPDF/')
+def convertPDF():
+    workbook = load_workbook('fruits2.xlsx', guess_types=True, data_only=True)
+    worksheet = workbook.active
+
+    pw = PDFWriter('fruits2.pdf')
+    pw.setFont('Courier', 12)
+    pw.setHeader('XLSXtoPDF.py - convert XLSX data to PDF')
+    pw.setFooter('Generated using openpyxl and xtopdf')
+
+    ws_range = worksheet.iter_rows('A1:H13')
+    for row in ws_range:
+        s = ''
+        for cell in row:
+            if cell.value is None:
+                s += ' ' * 11
+            else:
+                s += str(cell.value).rjust(10) + ' '
+        pw.writeLine(s)
+    pw.savePage()
+    pw.close()
