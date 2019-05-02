@@ -78,7 +78,7 @@ def logout_get():
 
 @app.route("/change_password", methods=["GET"])
 def change_password_get():
-    """undocumented"""
+    """ Displays the change password page or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         return render_template("change_password.html")
@@ -88,7 +88,7 @@ def change_password_get():
 
 @app.route("/change_password", methods=["POST"])
 def change_password_post():
-    """undocumented"""
+    """ Allows user to modify exisiting information for the login password """
     # pylint: disable=R1705
     if session.get("logged_in"):
         password = request.form["password"]
@@ -105,7 +105,7 @@ def change_password_post():
 
 @app.route("/invalid_confirmation", methods=["GET"])
 def invalid_confirmation_get():
-    """undocumented"""
+    """ Displays the invalid_confirmation.html if logged_in or redirects to /home """
     # pylint: disable=R1705
     if session.get("logged_in"):
         return render_template("invalid_confirmation.html")
@@ -153,7 +153,7 @@ def petitions_inspect_get(did):
 
 @app.route("/petitions/<id>", methods=["POST"])
 def petitions_inspect_post():
-    """undocumented"""
+    """ Allows the user access to '/petition' if approved or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         approved = request.form["approved"]
@@ -165,7 +165,7 @@ def petitions_inspect_post():
 
 @app.errorhandler(404)
 def page_not_found():
-    """undocumented"""
+    """ Method for 404 error handling """
     return render_template("404.html"), 404
 
 
