@@ -1,12 +1,27 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
-[dev-packages]
+name = "pypi"
 
 [packages]
 flask = "*"
+gunicorn = "*"
 
-[requires]
-python_version = "3.6"
+[dev-packages]
+black = "*"
+pylint = "*"
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-sugar = "*"
+
+[pipenv]
+allow_prereleases = true
+
+[scripts]
+server = "python run.py -d --port 5000 --host localhost"
+test = "./scripts/test.sh"
+cover = "./scripts/cover.sh"
+lint = "./scripts/lint.sh"
+create-image = "./scripts/create-docker-image.sh"
+image = "./scripts/run-docker-image.sh"
