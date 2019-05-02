@@ -1,4 +1,4 @@
-"""undocumented"""
+""" Advisagator Application in Flask """
 import os
 
 # pylint: disable=W0611
@@ -24,13 +24,13 @@ app.secret_key = os.urandom(16)
 
 @app.route("/", methods=["GET"])
 def home_redirect():
-    """undocumented"""
+    """ Displays the home page accessible at '/' """
     return redirect("/home")
 
 
 @app.route("/home", methods=["GET"])
 def home_get():
-    """undocumented"""
+    """ Displays the home page or redirects to /petitions """
     # pylint: disable=R1705
     if not session.get("logged_in"):
         return render_template("home.html")
@@ -40,7 +40,7 @@ def home_get():
 
 @app.route("/login", methods=["GET"])
 def login_get():
-    """undocumented"""
+    """ Displays the login page or redirects to /petitions """
     # pylint: disable=R1705
     if not session.get("logged_in"):
         return render_template("login.html")
@@ -50,7 +50,7 @@ def login_get():
 
 @app.route("/login", methods=["POST"])
 def login_post():
-    """undocumented"""
+    """ Checks the information for email and password then directs to /petitions """
     email = request.form["email"]
     password = request.form["password"]
     valid = login_handler.validate_user(email, password)
@@ -65,20 +65,20 @@ def login_post():
 
 @app.route("/invalid_login", methods=["GET"])
 def invalid_login_get():
-    """undocumented"""
+    """  Displays invalid_login.html accessible at '/invalid_login' """
     return render_template("invalid_login.html")
 
 
 @app.route("/logout", methods=["GET"])
 def logout_get():
-    """undocumented"""
+    """ Clears session and displays '/home' """
     session.clear()
     return redirect("/home")
 
 
 @app.route("/change_password", methods=["GET"])
 def change_password_get():
-    """undocumented"""
+    """ Displays the change password page or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         return render_template("change_password.html")
@@ -88,7 +88,7 @@ def change_password_get():
 
 @app.route("/change_password", methods=["POST"])
 def change_password_post():
-    """undocumented"""
+    """ Allows user to modify exisiting information for the login password """
     # pylint: disable=R1705
     if session.get("logged_in"):
         password = request.form["password"]
@@ -105,7 +105,7 @@ def change_password_post():
 
 @app.route("/invalid_confirmation", methods=["GET"])
 def invalid_confirmation_get():
-    """undocumented"""
+    """ Displays the invalid_confirmation.html if logged_in or redirects to /home """
     # pylint: disable=R1705
     if session.get("logged_in"):
         return render_template("invalid_confirmation.html")
@@ -115,7 +115,7 @@ def invalid_confirmation_get():
 
 @app.route("/petitions", methods=["GET"])
 def petitions_get():
-    """undocumented"""
+    """ Displays 'petitions.html' or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         petitions = database_handler.get_petitions(session["email"])
@@ -135,7 +135,7 @@ def petitions_get():
 
 @app.route("/petitions/<id>", methods=["GET"])
 def petitions_inspect_get(did):
-    """undocumented"""
+    """ Displays petition info if logged in or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         petition = database_handler.get_petition_info(did)
@@ -153,7 +153,7 @@ def petitions_inspect_get(did):
 
 @app.route("/petitions/<id>", methods=["POST"])
 def petitions_inspect_post():
-    """undocumented"""
+    """ Allows the user access to '/petition' if approved or redirects to '/home' """
     # pylint: disable=R1705
     if session.get("logged_in"):
         approved = request.form["approved"]
@@ -165,7 +165,7 @@ def petitions_inspect_post():
 
 @app.errorhandler(404)
 def page_not_found():
-    """undocumented"""
+    """ Method for 404 error handling """
     return render_template("404.html"), 404
 
 
