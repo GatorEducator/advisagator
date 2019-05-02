@@ -1,4 +1,4 @@
-"""undocumented"""
+""" Advisagator Application in Flask """
 import os
 
 # pylint: disable=W0611
@@ -24,13 +24,13 @@ app.secret_key = os.urandom(16)
 
 @app.route("/", methods=["GET"])
 def home_redirect():
-    """undocumented"""
+    """ Displays the home page accessible at '/' """
     return redirect("/home")
 
 
 @app.route("/home", methods=["GET"])
 def home_get():
-    """undocumented"""
+    """ Displays the home page or redirects to /petitions """
     # pylint: disable=R1705
     if not session.get("logged_in"):
         return render_template("home.html")
@@ -40,7 +40,7 @@ def home_get():
 
 @app.route("/login", methods=["GET"])
 def login_get():
-    """undocumented"""
+    """ Displays the login page or redirects to /petitions """
     # pylint: disable=R1705
     if not session.get("logged_in"):
         return render_template("login.html")
@@ -50,7 +50,7 @@ def login_get():
 
 @app.route("/login", methods=["POST"])
 def login_post():
-    """undocumented"""
+    """ Checks the information for email and password then directs to /petitions """
     email = request.form["email"]
     password = request.form["password"]
     valid = login_handler.validate_user(email, password)
@@ -65,13 +65,13 @@ def login_post():
 
 @app.route("/invalid_login", methods=["GET"])
 def invalid_login_get():
-    """undocumented"""
+    """  Displays invalid_login.html accessible at '/invalid_login' """
     return render_template("invalid_login.html")
 
 
 @app.route("/logout", methods=["GET"])
 def logout_get():
-    """undocumented"""
+    """ Clears session and displays '/home' """
     session.clear()
     return redirect("/home")
 
