@@ -1,6 +1,8 @@
 """AppFactory"""
 import flask
+import os.path
 
+from flask_autoindex import AutoIndex
 
 UPLOAD_FOLDER = "uploads/"
 
@@ -8,7 +10,6 @@ UPLOAD_FOLDER = "uploads/"
 def create_app():
     """Create an app"""
     app = flask.Flask(__name__)
-
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
     with app.app_context():
@@ -18,3 +19,6 @@ def create_app():
         from . import teachers  # noqa: E402, F401
         from . import login  # noqa: E402, F401
     return app
+
+def see_uploads():
+    AutoIndex(app, browse_root=UPLOAD_FOLDER)
