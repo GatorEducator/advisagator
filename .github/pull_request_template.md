@@ -1,21 +1,26 @@
-# Description of Pull Request
+<!-- A short description can be included here -->
+<!-- Please ensure that reviewers are assigned -->
 
-<!-- Please include a short summary of the proposed changes. -->
-<!-- Also include any other relevant information that is useful for this pull request. -->
+### What is the current behavior?
+<!-- You can link to an open issue here -->
 
-Fixes #<!-- IssueNumber -->
 
-## Type of Change
 
-Please describe the pull request as one of the following: 
+### What is the new behavior if this PR is merged?
 
-- [ ] Bug fix
-- [ ] Breaking change
-- [ ] New feature
-- [ ] Documentation update
-- [ ] Other <!-- Please specify any helpful information below -->
 
-## Tags
 
-<!-- Please tag those who are responsible for reviewing proposed changes below. -->
-<!-- Don't forget to assign people who is going to work on this issue and add labels. -->
+#### Other information
+
+##### This PR has:
+
+- [ ] Commit messages that are correctly formatted
+- [ ] Tests for newly introduced code
+- [ ] Docstrings for newly introduced code
+
+This PR is a <!-- REQUIRED: replace this comment with one of ["small change", "feature", "compatibility breaking update", "non-versioned change"] -->
+that fixes #<!-- replace this comment with an issue number if applicable -->
+
+**Developers**
+
+@<!-- Include your name, and @ any others responsible for these changes -->

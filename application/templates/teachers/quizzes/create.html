@@ -1,0 +1,26 @@
+{% extends "/teachers/base_template.html" %}
+	{% block title %}Teacher Dashboard Home{% endblock %}
+	{% block body %}
+		<style>
+			ul {
+				list-style-type: none;
+				margin: 0;
+			}
+		</style>
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<h1>Create a Quiz</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4">
+					<form action = "/teachers/classes/{{class_id}}/quizzes/create/"
+	 				      method = "POST"
+				              enctype = "multipart/form-data">
+
+				 		<input type = "file" name = "file" />
+				 		<input type = "submit" value="Upload"/>
+					</form>
+		</div>
+	{% endblock %}

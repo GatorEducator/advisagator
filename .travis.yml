@@ -1,0 +1,51 @@
+language: python
+python: "3.7"
+dist: xenial
+os: linux
+
+# ignore the virtualenv that Travis creates
+# setup a secure login to CodeCov
+# set env variables for different jobs
+env:
+  global:
+    - PIPENV_VENV_IN_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+    - LANG=en_US.UTF-8
+    - LC_ALL=en_US.UTF-8
+    - secure: "P26yt3T7Jp1HgCyScJ3O82hO7Z0HM9NK1GpwFgJ+a3xEE9dc2G0EM2O/k4ye0fFSObwjTeQl8kZwfvn/D4X++nulGhPI9ImLWcNIiElANyY7Gi+r2X+t1toE2RqCQ5FqtPQvdA8+SB3h7mf/br02gOQajY6gxD0/YjVke6FQmMT4npSrLwo9FgEgT5KY5/8GrKbJUDbhGJRPk3rgXFyTXFuRDMeVAZlfuIkdGVAwM9YFCMlqhzv/D1YP/DF8ODHR8zgtE3oXLwaoXzKTjuQ/yrSzsviU6lMrLOANLLLYGsFBhBcv52wELre/QisYW8O9swLlNanxHtqapT9r8JZIGy+2+52Hs5evIFnKKUhjuE/YgGWMu+KFwn/FJiZTpbwDXl85XCufgG98Ak62ZOypxGKwDaAJVxLhgaS/s+0LOMghVA6htVnx++oTUqdCCOVI7A3rWfX3zR2/zJWM+JhBqGKMUUp2jp9JLPzaeQSTHc24SaMWMNb95aj50orL60F+7SxrKGIdLA0ejJ6/tc1RqBYAjqdN9d9Z436nt8vWoOH3WrQmvh1+np8/rDuU7TpwOfw2Zur2tEdpdv5tNJjt7OBDjUONx+iONqNyVGS/V6rO2Acg9meYz0O62UNw9YeVSzp+89ZAsGYvY+C9rZCEzt33nrbzOd83vEAb36sxAY8="
+    - secure: "o/dxLIjL50bW4Qak/zNepaRJIt1kUSVCfxQY2HQ6cmJku6NNNb+BriRuqE0ddc1l35n77vE7MHWMV264ysc2OlVIZWGFwJ82yk+yqS9RjJvwM1XwP74AiiHzxk1XQO3ylTK3P0pP+legfoDQ4AZrGJCyOZ39OtPdJXVz/5gPWPbGqzE+U43PzzdvvWqQfFBXXP2rIrOAamUdDeQlB6nLB1lUIPJ7VoxVVLfhSE0n3ku2SgW3QMkq4/ytr63mG2TD9sbGXMbz9R8Q+enothockujlx9z4nI0ew/97wDsBC9T7oqGpuZAnokDgLtsMo1y5ekP7bEELuBFsa2WchPbTw3M42beUj6MluVeI+i4G3UIvAKOA3E7EelkJ7pndnO+91KtMBda3ZvO870DZtbo+X8Sg6WZGbzdvGpB7+qQcsIm41Y8vAy3c3ryps6rRKaAiFQDK77GkvKpTrl6V7soKBA2/5O/PE9RIaqYFsjvv1vFhkp4Ib0hqoxBaGy3AMjAdPRVamW9Ocngnokmn7lDOvNkuvIarcIPMgiSSS6xMLtbKPlZ2SIyRk5cimq3PzF2yCaC8JZu6WQXkAjWPs3Vh7wNiBJf29vKkpOLdGPR0n8VN05fNJi7WnZNj+HvwnFHHPgQjWuGrO+GiTLWdHS5YlpVB9WxTFhbxpDY1b2ZAR1A="
+
+# command to install dependencies
+install:
+  - pip install --upgrade pip
+  - pip install --upgrade pipenv
+  - pipenv install --dev --python "3.7"
+  - pip install codecov
+  - gem install mdl
+
+# use a cache to improve performance
+# cache pip installations
+cache: pip
+
+# perform testing:
+# --> run the test suite and generate coverage with Pipfile script
+# --> lint the code with Pipfile script
+# --> lint the README documentation with mdl
+script:
+  - pipenv run cover
+  - pipenv run lint --check
+  - mdl README.md
+
+# report coverage information to CodeCov
+after_success:
+  - codecov
+  # - source pr_tag_release.sh
+
+# deploy to GitHub Releases on PR merge
+# deploy:
+#   provider: releases
+#   api_key: "$GITHUB_OAUTH_TOKEN"
+#   skip_cleanup: true
+#   on:
+#     all_branches: true
+#     condition: $DO_GITHUB_RELEASE = true
