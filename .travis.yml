@@ -39,7 +39,7 @@ script:
 # report coverage information to CodeCov
 after_success:
   - codecov
-  - source pr_tag_release.sh
+  # - source pr_tag_release.sh
 
 # deploy to GitHub Releases on PR merge
 # deploy:
