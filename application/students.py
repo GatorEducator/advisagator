@@ -1,6 +1,5 @@
 """ Student endpoints """
 import flask
-import os
 
 from flask import send_file
 from flask import current_app as app
@@ -142,6 +141,7 @@ def student_4yrplan():
 
 @app.route("/return-files/")
 def return_files_tut():
+""" Downloads 4yr plan template """
     try:
         return send_file(
             "4yrplan/4yrplan_template.csv", attachment_filename="4yrplan_template.xlsx"

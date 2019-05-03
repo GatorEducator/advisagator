@@ -1,8 +1,8 @@
 """ teacher endpoints """
 import csv
 import os
-import re
 import os.path
+import re
 import flask
 
 from flask import current_app as app
