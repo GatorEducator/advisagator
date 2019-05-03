@@ -118,7 +118,7 @@ def student_4yrplan():
                 "select name from people where person_id=?;", [flask.session["id"]]
             )[0][0]
             contents = file.stream.read()
-            #pylint: disable=bad-continuation
+            # pylint: disable=bad-continuation
             with open(
                 f"{app.config['UPLOAD_FOLDER']}/{student_name}_{file.filename}", "wb"
             ) as out_file:
