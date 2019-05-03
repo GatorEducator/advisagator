@@ -74,16 +74,3 @@ docker run --name quizagator -p 5000:80 -e FLASK_SECRET_KEY=d2dbb3 gatoreducator
 Additionally, developers can use `pipenv run create-image` and `pipenv run
 image` to run a development container -- this is not to be deployed to
 production. -->
-
-
-<!-- ## Contributors
-
-Check out our contributors!
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/yeej2"><img src="https://avatars1.githubusercontent.com/u/22895281?v=4" width="100px;" alt="Joshua Yee"/><br /><sub><b>Joshua Yee</b></sub></a><br /><a href="https://github.com/GatorEducator/quizagator/commits?author=yeej2" title="Code">💻</a> <a href="#infra-yeej2" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#review-yeej2" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/GatorEducator/quizagator/commits?author=yeej2" title="Documentation">📖</a></td><td align="center"><a href="https://saejinmh.com"><img src="https://avatars1.githubusercontent.com/u/5274499?v=4" width="100px;" alt="Saejin Mahlau-Heinert"/><br /><sub><b>Saejin Mahlau-Heinert</b></sub></a><br /><a href="https://github.com/GatorEducator/quizagator/commits?author=Michionlion" title="Code">💻</a> <a href="#infra-Michionlion" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#platform-Michionlion" title="Packaging/porting to new platform">📦</a> <a href="#review-Michionlion" title="Reviewed Pull Requests">👀</a></td><td align="center"><a href="https://github.com/quigley-c"><img src="https://avatars1.githubusercontent.com/u/35495466?v=4" width="100px;" alt="Carson Quigley"/><br /><sub><b>Carson Quigley</b></sub></a><br /><a href="https://github.com/GatorEducator/quizagator/commits?author=quigley-c" title="Documentation">📖</a></td><td align="center"><a href="https://github.com/JattMones"><img src="https://avatars0.githubusercontent.com/u/22432176?v=4" width="100px;" alt="Matt"/><br /><sub><b>Matt</b></sub></a><br /><a href="https://github.com/GatorEducator/quizagator/commits?author=JattMones" title="Documentation">📖</a></td></tr></table>
-
-<!-- ALL-CONTRIBUTORS-LIST:END --> -->
-
-Don't know what the emoji's mean? Check out the [key](https://allcontributors.org/docs/en/emoji-key)!
