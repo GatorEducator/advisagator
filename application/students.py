@@ -141,7 +141,7 @@ def student_4yrplan():
 
 @app.route("/return-files/")
 def return_files_tut():
-""" Downloads 4yr plan template """
+    """ Downloads 4yr plan template """
     try:
         return send_file(
             "4yrplan/4yrplan_template.csv", attachment_filename="4yrplan_template.xlsx"
