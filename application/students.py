@@ -118,10 +118,11 @@ def student_4yrplan():
                 "select name from people where person_id=?;", [flask.session["id"]]
             )[0][0]
             contents = file.stream.read()
+            #pylint: disable: bad-continuation
             with open(
                 f"{app.config['UPLOAD_FOLDER']}/{student_name}_{file.filename}", "wb"
             ) as out_file:
-                file.write(contents)
+                out_file.write(contents)
         return flask.redirect("/students/4yrplan/")
 
     return flask.render_template("/students/4yrplan.html")
@@ -146,5 +147,5 @@ def return_files_tut():
         return send_file(
             "4yrplan/4yrplan_template.csv", attachment_filename="4yrplan_template.xlsx"
         )
-    except Exception as e:
+    except Exception as NoFileFound:
         return str(e)
