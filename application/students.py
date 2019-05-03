@@ -101,10 +101,10 @@ def student_quiz_page(class_id, quiz_id):
     return flask.render_template("/students/quiz_page.html", quiz_name=quiz_name)
 
 
-@app.route("/students/4yrplan/", methods=['POST', 'GET'])
+@app.route("/students/4yrplan/", methods=["POST", "GET"])
 def student_4yrplan():
     """ 4 year plan page """
-    if flask.request.method == 'POST':
+    if flask.request.method == "POST":
         if "file" not in flask.request.files:
             flask.flash("No file part")
             return flask.redirect(flask.request.url)
@@ -115,15 +115,18 @@ def student_4yrplan():
             flask.flash("No selected file")
             return flask.redirect(flask.request.url)
         if file:
-            student_name=db.query_db("select name from people where person_id=?;", [flask.session["id"]]) [0][0]
+            student_name = db.query_db(
+                "select name from people where person_id=?;", [flask.session["id"]]
+            )[0][0]
             contents = file.stream.read()
-            with open(f"{app.config['UPLOAD_FOLDER']}/{student_name}_{file.filename}", "wb") as out_file:
+            with open(
+                f"{app.config['UPLOAD_FOLDER']}/{student_name}_{file.filename}", "wb"
+            ) as out_file:
                 file.write(contents)
         return flask.redirect("/students/4yrplan/")
 
-    return flask.render_template(
-        "/students/4yrplan.html"
-    )
+    return flask.render_template("/students/4yrplan.html")
+
 
 #
 # @app.route('/download')
@@ -137,9 +140,11 @@ def student_4yrplan():
 #                  "attachment; filename=4yrplan_template.csv"})
 
 
-@app.route('/return-files/')
+@app.route("/return-files/")
 def return_files_tut():
-	try:
-		return send_file('4yrplan/4yrplan_template.csv', attachment_filename='4yrplan_template.xlsx')
-	except Exception as e:
-		return str(e)
+    try:
+        return send_file(
+            "4yrplan/4yrplan_template.csv", attachment_filename="4yrplan_template.xlsx"
+        )
+    except Exception as e:
+        return str(e)

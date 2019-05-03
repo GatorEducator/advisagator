@@ -1,6 +1,5 @@
 """AppFactory"""
 import flask
-import os.path
 
 from .bp_index import auto_bp
 
@@ -11,8 +10,7 @@ def create_app():
     """Create an app"""
     app = flask.Flask(__name__)
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-    app.register_blueprint(auto_bp, url_prefix='/teachers/4yrplan')
-
+    app.register_blueprint(auto_bp, url_prefix="/teachers/4yrplan")
 
     with app.app_context():
         # pylint: disable=unused-import

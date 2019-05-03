@@ -2,10 +2,9 @@
 import csv
 import os
 import re
-import flask
 import os.path
+import flask
 
-from flask_autoindex import AutoIndex
 from flask import current_app as app
 from .students import student_quiz_page
 from . import db_connect as db
