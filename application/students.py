@@ -147,5 +147,6 @@ def return_files_tut():
         return send_file(
             "4yrplan/4yrplan_template.csv", attachment_filename="4yrplan_template.xlsx"
         )
-    except Exception as NoFileFound:
-        return str(NoFileFound)
+    # pylint: disable=broad-except
+    except Exception as e:
+        return str(e)
