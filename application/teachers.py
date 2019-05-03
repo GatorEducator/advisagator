@@ -149,12 +149,3 @@ def upload_quiz(class_id):
 def quiz_page(class_id, quiz_id):
     """Individual quiz page"""
     return student_quiz_page.__wrapped__(class_id, quiz_id)
-
-
-@app.route("/teachers/4yrplan/", methods=['POST', 'GET'])
-def teachers_4yrplan():
-    """ 4 year plan page """
-    app.see_uploads()
-    # return flask.render_template(
-    #     "/teachers/.html"
-    # )
