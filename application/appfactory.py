@@ -2,7 +2,7 @@
 import flask
 
 
-UPLOAD_FOLDER = "/uploads/"
+UPLOAD_FOLDER = "uploads/"
 
 
 def create_app():

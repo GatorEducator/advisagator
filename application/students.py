@@ -2,8 +2,6 @@
 import flask
 import os
 
-from openpyxl import load_workbook
-from PDFWriter import PDFWriter
 from flask import send_file
 from flask import current_app as app
 from . import db_connect as db
@@ -102,9 +100,27 @@ def student_quiz_page(class_id, quiz_id):
     flask.flash(f"You receieved {result[0]} on this quiz.")
     return flask.render_template("/students/quiz_page.html", quiz_name=quiz_name)
 
-@app.route("/students/4yrplan/")
+
+@app.route("/students/4yrplan/", methods=['POST', 'GET'])
 def student_4yrplan():
     """ 4 year plan page """
+    if flask.request.method == 'POST':
+        if "file" not in flask.request.files:
+            flask.flash("No file part")
+            return flask.redirect(flask.request.url)
+        file = flask.request.files["file"]
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == "":
+            flask.flash("No selected file")
+            return flask.redirect(flask.request.url)
+        if file:
+            student_name=db.query_db("select name from people where person_id=?;", [flask.session["id"]]) [0][0]
+            contents = file.stream.read()
+            with open(f"{app.config['UPLOAD_FOLDER']}/{student_name}_{file.filename}", "wb") as out_file:
+                file.write(contents)
+        return flask.redirect("/students/4yrplan/")
+
     return flask.render_template(
         "/students/4yrplan.html"
     )
@@ -127,25 +143,3 @@ def return_files_tut():
 		return send_file('4yrplan/4yrplan_template.csv', attachment_filename='4yrplan_template.xlsx')
 	except Exception as e:
 		return str(e)
-
-@app.route('/convertPDF/')
-def convertPDF():
-    workbook = load_workbook('fruits2.xlsx', guess_types=True, data_only=True)
-    worksheet = workbook.active
-
-    pw = PDFWriter('fruits2.pdf')
-    pw.setFont('Courier', 12)
-    pw.setHeader('XLSXtoPDF.py - convert XLSX data to PDF')
-    pw.setFooter('Generated using openpyxl and xtopdf')
-
-    ws_range = worksheet.iter_rows('A1:H13')
-    for row in ws_range:
-        s = ''
-        for cell in row:
-            if cell.value is None:
-                s += ' ' * 11
-            else:
-                s += str(cell.value).rjust(10) + ' '
-        pw.writeLine(s)
-    pw.savePage()
-    pw.close()
