@@ -1,5 +1,6 @@
 # Advisagator
 
+![Image of Logo](https://raw.githubusercontent.com/GatorEducator/advisagator/master/.github/advisagator.png)
 
 [![Travis Build Status](https://travis-ci.com/GatorEducator/quizagator.svg?branch=master)](https://travis-ci.com/GatorEducator/advisagator)
 <!-- [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/gatoreducator/quizagator.svg?style=popout)](https://hub.docker.com/r/gatoreducator/quizagator) -->
@@ -7,7 +8,7 @@
 <!-- [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat)](#contributors) -->
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-blue.svg)](https://www.python.org/)
 
-## A planning Tool or communicate your 4 year plan with your advisers
+## A planning tool or communicate your 4 year plan with your advisers
 
 Advisagator allows you to download a 4 year plan template to be filled out by you
 and then uploaded back up. The tool automatically adds your name to start of the

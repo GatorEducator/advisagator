@@ -144,9 +144,7 @@ def student_4yrplan():
 def return_files_tut():
     """ Downloads 4yr plan template """
     try:
-        return send_file(
-            "4yrplan/_4yrplan.xlsx", attachment_filename="_4yrplan.xlsx"
-        )
+        return send_file("4yrplan/_4yrplan.xlsx", attachment_filename="_4yrplan.xlsx")
     # pylint: disable=broad-except
     except Exception as e:
         return str(e)
